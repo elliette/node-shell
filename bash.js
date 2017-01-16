@@ -1,17 +1,17 @@
-//console.log(process); 
-
 var commands = require('./command'); 
-//var userCommand = 
-
 process.stdout.write('prompt > '); 
 
 process.stdin.on('data', function(data){
-	var cmd = data.toString().trim(); 
-	commands[cmd](); 
-})
+	var args = data.toString().trim().split(" "); 
 
-//console.log("COMMANDS ARE "+ commands);
+	var cmd = args[0]; 
+	var textInput = args.slice(1).join(" "); 
+
+	commands[cmd](textInput); 
+	process.stdout.write("\n" + "prompt > ");
+
+	}); 
 
 
 
-	
+
